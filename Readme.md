@@ -5,11 +5,14 @@ It combines geospatial centroids with census population figures to provide an in
 
 ---
 
-## ✨ Features
+# Indian Census Visualization (2001–2011)
+This Streamlit app visualizes district-level population growth in India using census data. It combines geospatial centroids with census population figures to provide an interactive map, bar chart comparisons, and insights.
+
+--- ## ✨ Features
 - Interactive **map** using Plotly scatter_mapbox
 - **Sidebar filter** to explore data state by state
-- **Top 10 districts** by growth rate displayed in a table
-- Easy-to-run Streamlit app with clean UI
+- **Bar chart comparisons** of growth rates across districts
+- **Top 10 districts** by growth rate displayed in a table - Easy-to-run Streamlit app with clean UI
 
 ---
 
