@@ -13,6 +13,10 @@ This Streamlit app visualizes district-level population growth in India using ce
 - **Sidebar filter** to explore data state by state
 - **Bar chart comparisons** of growth rates across districts
 - **Top 10 districts** by growth rate displayed in a table - Easy-to-run Streamlit app with clean UI
+- Cross-state growth rate comparison bar chart
+- Line chart showing population trends (2001 vs 2011)
+- Scatter plot linking growth rate with population size
+
 
 ---
 
