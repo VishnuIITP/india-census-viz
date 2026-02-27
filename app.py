@@ -40,6 +40,17 @@ fig = px.scatter_map(
 # Show chart in Streamlit
 st.plotly_chart(fig)
 
+# --- Bar Chart Visualization ---
+st.subheader(f"Population Growth Rate by District in {selected_state}")
+fig_bar = px.bar( filtered_df.sort_values("Growth_rate", ascending=False).head(10),
+                  x="District",
+                  y="Growth_rate",
+                  color="Growth_rate",
+                  color_continuous_scale="Viridis",
+                  title=f"Growth Rate Comparison for Districts in {selected_state}" )
+
+st.plotly_chart(fig_bar)
+
 # Extra: Top 10 districts by growth rate
 st.subheader(f"Top 10 Districts by Growth Rate in {selected_state}")
 top10 = filtered_df.sort_values("Growth_rate", ascending=False).head(10)
