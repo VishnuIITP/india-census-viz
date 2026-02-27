@@ -55,3 +55,47 @@ st.plotly_chart(fig_bar)
 st.subheader(f"Top 10 Districts by Growth Rate in {selected_state}")
 top10 = filtered_df.sort_values("Growth_rate", ascending=False).head(10)
 st.dataframe(top10[['District', 'Growth_rate']])
+
+# --- Cross-State Comparison ---
+st.subheader("Cross-State Growth Rate Comparison")
+
+state_growth = df.groupby("state").apply(
+    lambda x: ((x["Population in 2011"].sum() - x["Population in 2001"].sum())
+               / x["Population in 2001"].sum()) * 100
+).reset_index(name="Growth_rate")
+
+fig_state_bar = px.bar(
+    state_growth.sort_values("Growth_rate", ascending=False),
+    x="state",
+    y="Growth_rate",
+    color="Growth_rate",
+    color_continuous_scale="Viridis",
+    title="Population Growth Rate by State (2001–2011)"
+)
+st.plotly_chart(fig_state_bar)
+
+# line chart for state wise population trend
+
+st.subheader("Population Trend (2001 vs 2011)")
+trend_df = df.groupby("state")[["Population in 2001", "Population in 2011"]].sum().reset_index()
+fig_line = px.line(
+    trend_df.melt(id_vars="state", var_name="Year", value_name="Population"),
+    x="Year",
+    y="Population",
+    color="state",
+    title="State-wise Population Trend"
+)
+st.plotly_chart(fig_line)
+
+# scatter plot of growth vs population size
+
+st.subheader("Growth Rate vs Population Size")
+fig_scatter = px.scatter(
+    df,
+    x="Growth_rate",
+    y="Population in 2011",
+    color="state",
+    hover_name="District",
+    title="District Growth Rate vs Population Size"
+)
+st.plotly_chart(fig_scatter)
